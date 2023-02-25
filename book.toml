@@ -1,0 +1,16 @@
+[book]
+authors = ["m0003r"]
+language = "ru"
+multilingual = false
+src = "src"
+title = "Python для Рины"
+
+[preprocessor.mermaid]
+command = "mdbook-mermaid"
+
+[preprocessor.footnote]
+
+[output.html]
+additional-js = ["mermaid.min.js", "mermaid-init.js"]
+curly-quotes = true
+mathjax-support = true
