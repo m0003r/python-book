@@ -1,0 +1,288 @@
+<!DOCTYPE HTML>
+<html lang="ru" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Как работают компьютеры - Python для Рины</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="00_00_intro.html"><strong aria-hidden="true">1.</strong> Введение</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="00_01_algorithms.html"><strong aria-hidden="true">1.1.</strong> Алгоритмы</a></li><li class="chapter-item expanded "><a href="00_02_computer.html" class="active"><strong aria-hidden="true">1.2.</strong> Как работают компьютеры</a></li><li class="chapter-item expanded "><a href="00_03_abstractions_and_vms.html"><strong aria-hidden="true">1.3.</strong> Абстракции и виртуальные машины</a></li><li class="chapter-item expanded "><a href="00_04_languages_and_levels.html"><strong aria-hidden="true">1.4.</strong> Языки программирования</a></li></ol></li><li class="chapter-item expanded "><a href="01_00_game.html"><strong aria-hidden="true">2.</strong> Давай сыграем в игру</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="01_01_ipython_look.html"><strong aria-hidden="true">2.1.</strong> Как выглядит IPython</a></li><li class="chapter-item expanded "><a href="01_02_print.html"><strong aria-hidden="true">2.2.</strong> Вывод текста</a></li><li class="chapter-item expanded "><a href="01_03_calc_on_steroids.html"><strong aria-hidden="true">2.3.</strong> IPython - калькулятор на стероидах</a></li><li class="chapter-item expanded "><a href="01_04_types.html"><strong aria-hidden="true">2.4.</strong> Типы данных</a></li><li class="chapter-item expanded "><a href="01_05_variables.html"><strong aria-hidden="true">2.5.</strong> Переменные</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Python для Рины</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="Как-работает-компьютер"><a class="header" href="#Как-работает-компьютер">Как работает компьютер</a></h1>
+<blockquote>
+<p>Любая достаточно развитая технология неотличима от магии<br />
+(<em>третий закон Артура Кларка</em>)</p>
+</blockquote>
+<p>Компьютеры умеют только одно: производить разные операции над нулями и единицами.</p>
+<p>Но, во-первых, этих нулей и единиц <em>много</em> (порядка сотни миллиардов, если учитывать только оперативную память), 
+а во-вторых, делают они это очень <em>быстро</em> (миллиарды операций в секунду). Поэтому нам кажется, что происходит 
+какая-то магия. Эту магию мы можем увидеть, услышать или ощутить благодаря всяким дополнительным приспособлениям 
+(устройствам ввода-вывода), с помощью которых вычислительная машина может взаимодействовать с внешним миром (и с нами).</p>
+<p>Схематически компьютеры с момента самого их изобретения устроены следующим образом 
+(эта схема называется <a href="https://ru.wikipedia.org/wiki/%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0_%D1%84%D0%BE%D0%BD_%D0%9D%D0%B5%D0%B9%D0%BC%D0%B0%D0%BD%D0%B0">архитектурой фон Неймана</a>):</p>
+<pre class="mermaid">graph LR
+    subgraph C[&quot;Процессор&quot;]
+        direction LR
+        M[Устройство\nуправления]
+        ALU[Арифметико-логическое устройство]
+        R[Регистры]:::alu
+    end
+    MEM
+    
+    C &lt;--&gt; MEM[Оперативная память]
+    C &lt;--&gt; IO[Устройства\nввода-вывода]
+
+classDef alu fill:#9ff;
+</pre>
+<p>Для чего нужны все эти части?</p>
+<h2 id="Процессор-и-его-части"><a class="header" href="#Процессор-и-его-части">Процессор и его части</a></h2>
+<p>Арифметико-логическое устройство занимается арифметикой (складывает, вычитает, умножает, делит и т.п.)
+и логикой (сравнивает значения, выполняет дизъюнкцию, конъюнкцию и другие логические операции).</p>
+<p>У процессора есть небольшое количество (порядка пары дюжин) <em>регистров</em>, в которых хранятся
+промежуточные результаты вычислений (и сравнений) и другие важные вещи, например,
+по какому адресу памяти нужно читать следующую команду.</p>
+<p>Ключевая часть компьютера — устройство управления, которое командует почти всем остальным. 
+Без него компьютер превратился бы в арифмометр, который работает только тогда, когда человек 
+нажимает кнопки и крутит ручку. Устройство управления командует и само собой, читая из оперативной памяти команды и исполняя их.</p>
+<p>Команды могут быть разными, например:</p>
+<ul>
+<li>Прочитать какое-нибудь значение из памяти и записать его в один из регистров</li>
+<li>Сложить числа из регистров</li>
+<li>Отправить какую-нибудь команду на одно из устройств вывода</li>
+<li>Перейти на какой-то другой адрес и начать читать команды оттуда</li>
+</ul>
+<p>Собственно, последовательность таких команд и составляет программу. Сами команды, разумеется, тоже кодируются нулями и единицами.</p>
+<h2 id="Память"><a class="header" href="#Память">Память</a></h2>
+<p>Оперативная память (часто просто “память”) состоит из множества ячеек, каждая из которых может хранить целое число от 0 до 255.
+У каждой ячейки есть свой номер — он называется адресом. В оперативной памяти хранится всё, что нужно для работы компьютера прямо сейчас. </p>
+<h2 id="Устройства-ввода-и-вывода"><a class="header" href="#Устройства-ввода-и-вывода">Устройства ввода и вывода</a></h2>
+<p>Устройства ввода и вывода нужны для взаимодействия компьютера с внешним миром: без этого он не сможет
+делать ничего полезного. Устройства ввода, например, — это клавиатура и мышь, устройство вывода — монитор.</p>
+<p><strong>NB</strong>: жёсткий диск (SSD, флешка) — это не часть оперативной памяти, а одно из устройств ввода-вывода.
+Когда мы открываем какой-либо файл, то сначала процессор просит жёсткий диск скопировать данные с какого-то
+определённого места диска в память, а когда сохраняем — наоборот, записать данные обратно на диск. </p>
+<h2 id="Как-выглядят-программы"><a class="header" href="#Как-выглядят-программы">Как выглядят программы</a></h2>
+<p>Программа может выглядеть, например, так:</p>
+<ol>
+<li>загрузи в регистр <code>A</code> число из памяти адресу 1</li>
+<li>загрузи в регистр <code>B</code> число из памяти по адресу 2</li>
+<li>сравни число из регистра <code>A</code> с числом из регистра <code>B</code></li>
+<li>если первое число меньше, перейди к шагу 7</li>
+<li>уменьши число в регистре <code>А</code> на число в регистре <code>B</code> (то есть в <code>A</code> будет <code>A - B</code>)</li>
+<li>перейди к шагу 3</li>
+<li>положи в память содержимое регистра <code>A</code> по адресу 3</li>
+</ol>
+<p>А <a href=" http://tpcg.io/_B2WE09" target="_blank">вот как это выглядит</a> в виде настоящей программы. Наверху есть кнопка <code>Execute</code>, 
+а внизу кода можно поменять начальные значения в ячейках <code>num1</code> и <code>num2</code>.</p>
+<p>Допустим, по адресу 1 расположено число 7, а по адресу 2 — число 3. Рассмотрим выполнение программы по шагам:</p>
+<div class="table-wrapper"><table><thead><tr><th>Шаг</th><th>№ ком.</th><th>Команда</th><th>№ след.</th><th><code>A</code></th><th><code>B</code></th><th>Результат<br />сравнения</th></tr></thead><tbody>
+<tr><td>1</td><td>1</td><td>Ячейка 1 → <code>A</code></td><td>2</td><td>7</td><td></td><td></td></tr>
+<tr><td>2</td><td>2</td><td>Ячейка 2 → <code>B</code></td><td>3</td><td>7</td><td>3</td><td></td></tr>
+<tr><td>3</td><td>3</td><td>Сравнить <code>A &lt; B</code></td><td>4</td><td>7</td><td>3</td><td></td></tr>
+<tr><td>4</td><td>4</td><td>Если так, перейти к <strong>7</strong></td><td>5</td><td>7</td><td>3</td><td>нет</td></tr>
+<tr><td>5</td><td>5</td><td><code>A - B</code> → <code>A</code></td><td>6</td><td>4</td><td>3</td><td>нет</td></tr>
+<tr><td>6</td><td>6</td><td>Перейти к <strong>3</strong></td><td>3</td><td>4</td><td>3</td><td>нет</td></tr>
+<tr><td>7</td><td>3</td><td>Сравнить <code>A</code> &lt; <code>B</code></td><td>4</td><td>4</td><td>3</td><td>нет</td></tr>
+<tr><td>8</td><td>4</td><td>Если так, перейти к <strong>7</strong></td><td>5</td><td>4</td><td>3</td><td>нет</td></tr>
+<tr><td>9</td><td>5</td><td><code>A - B</code> → <code>A</code></td><td>6</td><td>1</td><td>3</td><td>нет</td></tr>
+<tr><td>10</td><td>6</td><td>Перейти к <strong>3</strong></td><td>2</td><td>1</td><td>3</td><td>нет</td></tr>
+<tr><td>11</td><td>3</td><td>Сравнить <code>A &lt; B</code></td><td>4</td><td>1</td><td>3</td><td>да</td></tr>
+<tr><td>12</td><td>4</td><td>Если так, перейти к <strong>7</strong></td><td>5</td><td>1</td><td>3</td><td>да</td></tr>
+<tr><td>13</td><td>7</td><td><code>A</code> → Ячейка 3</td><td>(конец)</td><td>1</td><td>3</td><td>да</td></tr>
+</tbody></table>
+</div>
+<p>В этом случае программа вычислила остаток от деления числа 7 на число 3, вычитая из одного другое до тех пор, пока это возможно.</p>
+<h3 id="Контрольный-вопрос"><a class="header" href="#Контрольный-вопрос">Контрольный вопрос</a></h3>
+<blockquote>
+<p>Что случится, если в ячейке <code>2</code> будет записан ноль?</p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="00_01_algorithms.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="00_03_abstractions_and_vms.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="00_01_algorithms.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="00_03_abstractions_and_vms.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="mermaid.min.js"></script>
+        <script src="mermaid-init.js"></script>
+
+
+    </div>
+    </body>
+</html>

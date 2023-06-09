@@ -1,0 +1,229 @@
+<!DOCTYPE HTML>
+<html lang="ru" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Вывод текста - Python для Рины</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="00_00_intro.html"><strong aria-hidden="true">1.</strong> Введение</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="00_01_algorithms.html"><strong aria-hidden="true">1.1.</strong> Алгоритмы</a></li><li class="chapter-item expanded "><a href="00_02_computer.html"><strong aria-hidden="true">1.2.</strong> Как работают компьютеры</a></li><li class="chapter-item expanded "><a href="00_03_abstractions_and_vms.html"><strong aria-hidden="true">1.3.</strong> Абстракции и виртуальные машины</a></li><li class="chapter-item expanded "><a href="00_04_languages_and_levels.html"><strong aria-hidden="true">1.4.</strong> Языки программирования</a></li></ol></li><li class="chapter-item expanded "><a href="01_00_game.html"><strong aria-hidden="true">2.</strong> Давай сыграем в игру</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="01_01_ipython_look.html"><strong aria-hidden="true">2.1.</strong> Как выглядит IPython</a></li><li class="chapter-item expanded "><a href="01_02_print.html" class="active"><strong aria-hidden="true">2.2.</strong> Вывод текста</a></li><li class="chapter-item expanded "><a href="01_03_calc_on_steroids.html"><strong aria-hidden="true">2.3.</strong> IPython - калькулятор на стероидах</a></li><li class="chapter-item expanded "><a href="01_04_types.html"><strong aria-hidden="true">2.4.</strong> Типы данных</a></li><li class="chapter-item expanded "><a href="01_05_variables.html"><strong aria-hidden="true">2.5.</strong> Переменные</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Python для Рины</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="Вывод-текста-на-экран"><a class="header" href="#Вывод-текста-на-экран">Вывод текста на экран</a></h1>
+<p>Поскольку вывод текста сначала происходил не на экран, а на бумагу, то для вывода текста исторически используется слово <code>print</code> (печать).
+Воздадим должное программистским традициям, напечатав на экране <code>&quot;Hello, world!&quot;</code>.</p>
+<p>Открыв IPython, нужно в ответ на приглашение ввести <code>print(&quot;Hello, world!&quot;)</code> и нажать <code>Enter</code>.</p>
+<p>Произошла какая-то магия и текст “Hello, world!” появился на экране. Вжух!</p>
+<p>Можно попробовать сделать это ещё раз с другим текстом, например, <code>print(&quot;Привет, мир!&quot;)</code> или <code>print(&quot;Я не хлеб а код, неешь подумой!&quot;)</code>.</p>
+<p>Главное, чтобы внутри скобок был текст в кавычках, и в этом тексте не было внутренних кавычек.</p>
+<h2 id="Как-это-работает"><a class="header" href="#Как-это-работает">Как это работает</a></h2>
+<p>Каждая строка в IPython — это команда, которую IPython выполняет. Команды могут быть разных типов. Конструкция <code>print(&quot;Hello, world!&quot;)</code> — это вызов подпрограммы. Сначала разберёмся, что такое подпрограмма, потом разберёмся, как её можно вызвать (то есть запустить).</p>
+<h3 id="Подпрограммы-функции"><a class="header" href="#Подпрограммы-функции">Подпрограммы (функции)</a></h3>
+<p>Подпрограммы (они же часто называются функциями) — вещь удивительно полезная в хозяйстве. Один раз запрограммировал какое-то действие, возможно даже не ты, а кто-то другой, а потом можешь вызывать это действие в любой момент, когда понадобится. Мало того, у многих таких действий есть ещё и настраиваемые параметры (называемые аргументами), которые можно менять. </p>
+<h3 id="Вызов-функции"><a class="header" href="#Вызов-функции">Вызов функции</a></h3>
+<p>Зачем нужны все эти скобочки, кавычки и прочая орфография? Давайте разберём пример <code>print(&quot;Hello, world!&quot;)</code> по частям.</p>
+<p><code>print</code> — это имя функции, которая встроена в Python, она есть везде и всегда.</p>
+<p>Чтобы её вызвать, нужно поставить после её имени пару круглых скобок: <code>print()</code>. Эту нотацию программисты своровали у математиков: когда в математике пишут \( f(x) \), это означает, что нужно взять функцию \( f \) и применить её к аргументу \( x \). В нашем случае <code>print</code> — это функция, а <code>&quot;Hello, world!&quot;</code> — это аргумент.</p>
+<p>Кстати, можно попробовать вызвать функцию <code>print</code> без аргумента, то есть просто написать <code>print()</code>. Что произойдёт? Попробуйте!</p>
+<h3 id="Аргументы-функции-print"><a class="header" href="#Аргументы-функции-print">Аргументы функции <code>print</code></a></h3>
+<p>Аргументы функции — это просто значения, которые передаются в функцию. В нашем случае единственный аргумент — строка <code>&quot;Hello, world!&quot;</code>. Строка — это просто какой-то текст, заключённый в кавычки. В Python используются одинарные и двойные кавычки. Можно использовать любые, но важно, чтобы открывающая кавычка и закрывающая были одного типа.</p>
+<p>Если аргументов несколько, то они отделяются запятой.</p>
+<h3 id="Что-мы-можем-написать-для-нашей-программы"><a class="header" href="#Что-мы-можем-написать-для-нашей-программы">Что мы можем написать для нашей программы</a></h3>
+<p>Первой строкой нашей программы для игры будет вывод текста на экран. Выводить текст на экран мы будем с помощью функции <code>print</code>. В качестве аргумента мы будем передавать строку, которую нужно вывести на экран. Вот так:</p>
+<pre><code class="language-python">print(&quot;Угадай число от 1 до 100&quot;)
+</code></pre>
+<h1 id="Задания"><a class="header" href="#Задания">Задания</a></h1>
+<ol>
+<li>Вызвать функцию <code>print</code> без аргумента. Что произойдёт? Напечатано ли что-нибудь?</li>
+<li>Вызвать функцию <code>print</code> с одним аргументом-строкой, но забыть закрыть кавычки. Что произойдёт?</li>
+<li>Вызвать функцию <code>print</code> с двумя, тремя или большим количеством аргументов (аргументы отделяются друг от друга запятой). Что произойдёт?</li>
+</ol>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="01_01_ipython_look.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="01_03_calc_on_steroids.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="01_01_ipython_look.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="01_03_calc_on_steroids.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="mermaid.min.js"></script>
+        <script src="mermaid-init.js"></script>
+
+
+    </div>
+    </body>
+</html>
